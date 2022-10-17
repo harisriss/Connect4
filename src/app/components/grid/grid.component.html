@@ -1,10 +1,34 @@
-<table class="grid">
-  <tbody>
-  <tr *ngFor="let line of grid; let x = index">
-    <td *ngFor="let cell of line; let y = index">
-      <app-cell infos="{{x}},{{y}}--{{cell}}" [position]="{x:x, y:y}" [player]="cell" (isClicked)="cellClick($event)"></app-cell>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<p class="topbar">
+  <mat-toolbar>
+    <span class="board-title">Connect 4</span>
+  </mat-toolbar>
+</p>
+
+<div class="player">
+  <div class="player-turn">
+    <p *ngIf=" !isFinished && currentPlayer === 1" class="player1">Red turn</p>
+    <p *ngIf="!isFinished && currentPlayer === 2" class="player2">Yellow turn</p>
+    <p *ngIf="isFinished && winner === 1" class="player1">Player 1 won</p>
+    <p *ngIf="isFinished && winner === 2" class="player2">Player 2 won</p>
+    <p *ngIf="isFinished && winner === 3" class="draw">Draw</p>
+  </div>
+</div>
+
+<div class="grid-div">
+  <table class="grid">
+    <tbody>
+    <tr *ngFor="let line of grid; let x = index">
+      <td *ngFor="let cell of line; let y = index">
+        <app-cell infos="{{x}},{{y}}--{{cell}}" [position]="{x:x, y:y}" [player]="cell"
+                  (isClicked)="cellClick($event)"></app-cell>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="button">
+  <button mat-flat-button class="replay-button" (click)="newGame()">
+    Replay
+  </button>
+</div>
 
