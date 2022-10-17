@@ -1,0 +1,10 @@
+<table class="grid">
+  <tbody>
+  <tr *ngFor="let line of grid; let x = index">
+    <td *ngFor="let cell of line; let y = index">
+      <app-cell infos="{{x}},{{y}}--{{cell}}" [position]="{x:x, y:y}" [player]="cell" (isClicked)="cellClick($event)"></app-cell>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
