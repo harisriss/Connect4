@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card">
+    <h3>If you have some suggestions...</h3>
+
+    <div class="panel">
+      <div>
+        <textarea [(ngModel)]="newSuggestion" placeholder="Write your suggestion here !"></textarea>
+
+      </div>
+
+      <div class="sugg-button">
+        <button mat-flat-button class (click)="onAddSuggestion()"><em class='fas fa-plus'></em> Add Suggestion</button>
+      </div>
+
+
+
+    </div>
+
+    <div class="inner-card">
+      <ul *ngFor="let suggestion of (suggestionList$ | async)">
+        <li>{{suggestion}}</li>
+      </ul>
+
+    </div>
+
+
+  </div>
+</div>

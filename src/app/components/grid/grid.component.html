@@ -1,15 +1,14 @@
-<p class="topbar">
-  <mat-toolbar>
-    <span class="board-title">Connect 4</span>
-  </mat-toolbar>
-</p>
+<div class="topbar">
+  <app-toolbar></app-toolbar>
+</div>
 
 <div class="player">
   <div class="player-turn">
-    <p *ngIf=" !isFinished && currentPlayer === 1" class="player1">Red turn</p>
-    <p *ngIf="!isFinished && currentPlayer === 2" class="player2">Yellow turn</p>
-    <p *ngIf="isFinished && winner === 1" class="player1">Player 1 won</p>
-    <p *ngIf="isFinished && winner === 2" class="player2">Player 2 won</p>
+    <p *ngIf=" !isFinished && currentPlayer === 1" class="player1">Player 1 </p>
+    <p *ngIf="!isFinished && currentPlayer === 2" class="player2">Player 2 </p>
+    <p>   turn</p>
+    <p *ngIf="isFinished && winner === 1" class="player1">Red won</p>
+    <p *ngIf="isFinished && winner === 2" class="player2">Yellow won</p>
     <p *ngIf="isFinished && winner === 3" class="draw">Draw</p>
   </div>
 </div>
@@ -26,9 +25,15 @@
     </tbody>
   </table>
 </div>
+
 <div class="button">
   <button mat-flat-button class="replay-button" (click)="newGame()">
     Replay
   </button>
 </div>
+
+<div>
+  <app-suggestion-form></app-suggestion-form>
+</div>
+
 
