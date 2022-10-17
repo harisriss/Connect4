@@ -1,13 +1,47 @@
-.grid {
-  width: 400px;
-  height: 400px;
-  background-color: #2c2cd2;
-  margin: auto;
-  border-radius: 15px;
-
+canvas {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
-.button{
+.grid {
+  width: 100vw;
+  max-width: 700px;
+  min-height: 600px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  margin: auto;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  .row-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .grid {
+    min-height: 400px;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.button {
   margin: 10px;
   display: flex;
   justify-content: center;
@@ -36,8 +70,32 @@ td, tr {
 .player-turn {
   font-size: 35px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   margin-right: 10px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  p {
+    font-weight: bold;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 !important;
+
+    span {
+      color: white;
+    }
+  }
+    .draw {
+      color: white;
+    }
 }
 
 .player1 {

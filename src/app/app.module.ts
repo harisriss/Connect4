@@ -16,6 +16,7 @@ import {FormsModule} from '@angular/forms';
 import {NgxsModule} from "@ngxs/store";
 import {NgxsLoggerPluginModule} from "@ngxs/logger-plugin";
 import {environment} from "../environments/environment";
+import {GridState} from "./store/grid.state";
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import {environment} from "../environments/environment";
     MatToolbarModule,
     MatButtonModule,
     FormsModule,
-    NgxsModule.forRoot([SuggestionState], {
+    NgxsModule.forRoot([SuggestionState, GridState], {
       developmentMode: !environment.production
 
     }),

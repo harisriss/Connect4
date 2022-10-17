@@ -3,27 +3,26 @@
 </div>
 
 <div class="player">
-  <div class="player-turn">
-    <p *ngIf=" !isFinished && currentPlayer === 1" class="player1">Player 1 </p>
-    <p *ngIf="!isFinished && currentPlayer === 2" class="player2">Player 2 </p>
-    <p>   turn</p>
-    <p *ngIf="isFinished && winner === 1" class="player1">Red won</p>
-    <p *ngIf="isFinished && winner === 2" class="player2">Yellow won</p>
-    <p *ngIf="isFinished && winner === 3" class="draw">Draw</p>
+  <div class="player-turn animate__animated animate__fadeInRight">
+    <p *ngIf="!_state.isFinished && _state.currentPlayer === 1" class="player1">Player 1 <span
+      *ngIf="!_state.isFinished">turn</span></p>
+    <p *ngIf="!_state.isFinished && _state.currentPlayer === 2" class="player2">Player 2 <span
+      *ngIf="!_state.isFinished">turn</span></p>
+    <p *ngIf="_state.isFinished && _state.winner === 1" class="player1">Red won</p>
+    <p *ngIf="_state.isFinished && _state.winner === 2" class="player2">Yellow won</p>
+    <p *ngIf="_state.isFinished && _state.winner === 3" class="draw">Draw</p>
   </div>
 </div>
 
 <div class="grid-div">
-  <table class="grid">
-    <tbody>
-    <tr *ngFor="let line of grid; let x = index">
-      <td *ngFor="let cell of line; let y = index">
-        <app-cell infos="{{x}},{{y}}--{{cell}}" [position]="{x:x, y:y}" [player]="cell"
-                  (isClicked)="cellClick($event)"></app-cell>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="grid">
+    <div *ngFor="let line of _state.grid; let x = index" class="row-grid">
+      <div *ngFor="let cell of line; let y = index" class="cell-grid">
+        <app-cell (isClicked)="cellClick($event)" [player]="cell" [position]="{x:x, y:y}"
+                  infos="{{x}},{{y}}--{{cell}}"></app-cell>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="button">

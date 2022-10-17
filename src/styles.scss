@@ -1,2 +1,14 @@
-html, body { height: 100%; }
-body { margin: 0; font-family: "Helvetica Neue", Roboto, sans-serif; }
+@import '~@angular/material/prebuilt-themes/purple-green.css';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Quicksand", "Helvetica", sans-serif;
+  background: url("assets/images/background.png");
+  backdrop-filter: blur(150px);
+  -webkit-backdrop-filter: blur(150px);
+  background-size: cover;
+}
