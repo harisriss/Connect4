@@ -5,6 +5,8 @@ export class SetGrid {
   }
 }
 
+// ACTIONS //
+
 export class EmptyGrid {
   static readonly type = '[Grid] Empty';
 

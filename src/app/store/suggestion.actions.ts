@@ -5,6 +5,8 @@ export class AddSuggestion {
   }
 }
 
+// ACTIONS //
+
 export class EmptySuggestion {
   static readonly type = '[Suggestion] Empty';
 }

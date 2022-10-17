@@ -12,13 +12,13 @@ const MAX_MOVES = 42;
   selector: 'app-grid',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush // detects state changes
 })
 export class GridComponent implements OnInit, OnDestroy {
 
   @Select(GridState) game: Observable<GridStateModel> | undefined;
   _state: any;
-  storeSub: Subscription | undefined;
+  storeSub: Subscription | undefined; // allow the subscription to state modification
 
   canvas: HTMLCanvasElement | undefined;
   clicked = false;
@@ -30,6 +30,7 @@ export class GridComponent implements OnInit, OnDestroy {
   ) {
   }
 
+  // Getters
   get grid(): number[][] {
     return this._state.grid;
   }
@@ -61,6 +62,11 @@ export class GridComponent implements OnInit, OnDestroy {
     return {line: -1, column: -1};
   }
 
+  /**
+   * return the number of the column clicked
+   *
+   * @param column column clicked
+   */
   cellClick(column: number): void {
     if (!this.isFinished) {
       const emptyCell = this.getFirstEmptyCell(column);
@@ -72,6 +78,10 @@ export class GridComponent implements OnInit, OnDestroy {
     return this._state.nbMoves;
   }
 
+  /**
+   * verify if they are 4 pieces connected
+   * @param player
+   */
   is4Connected(player: number): boolean {
     // horizontalCheck
     for (let i = 0; i < this.grid.length; i++) {
@@ -120,9 +130,7 @@ export class GridComponent implements OnInit, OnDestroy {
     }
 
     // @ts-ignore
-    this.storeSub = this.game.subscribe((state: any) => {
-      console.log(state)
-
+    this.storeSub = this.game.subscribe((state: any) => { // state modification subscription
       this._state = {...state};
     });
 
@@ -133,12 +141,18 @@ export class GridComponent implements OnInit, OnDestroy {
     this.storeSub?.unsubscribe();
   }
 
-  // Getters / Setters
 
+  /**
+   * define a cell with the current player number
+   *
+   * @param line number of the line
+   * @param column number of the column
+   * @param player number of the player
+   */
   setCell(line: number, column: number, player: number): void {
     if (line !== -1 || column !== -1) {
-      this.setGrid(this.grid, line, column, player);
-      if (this.is4Connected(this.currentPlayer)) {
+      this.setGrid(this.grid, line, column, player);  // set the cell(line, column) with the player number
+      if (this.is4Connected(this.currentPlayer)) {    // check if it is a win
         this.win(this.currentPlayer);
       } else {
         this.nextPlayer();
@@ -146,6 +160,9 @@ export class GridComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * set the next player and check if there is a tie
+   */
   nextPlayer(): void {
     this.setCurrentPlayer(this.currentPlayer === 1 ? 2 : 1);
     if (this.getNbMove == MAX_MOVES - 1) {
@@ -155,6 +172,11 @@ export class GridComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * check if current player win
+   *
+   * @param player current player
+   */
   win(player: number): void {
     this.setIsFinished(true);
     this.setWinner(player);
@@ -163,6 +185,9 @@ export class GridComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * set a new game
+   */
   newGame(): void {
     this.emptyGrid();
     this.setCurrentPlayer(1);
@@ -173,6 +198,9 @@ export class GridComponent implements OnInit, OnDestroy {
     this.clicked = false;
   }
 
+  /**
+   * display confettis if a player win
+   */
   public surprise(): void {
     this.canvas = this.renderer2.createElement('canvas');
 
@@ -187,7 +215,7 @@ export class GridComponent implements OnInit, OnDestroy {
         y: 1
       },
       angle: 90,
-      spread: 180
+      spread: 150
     }
     if (this.canvas) {
       const myConfetti = confetti.create(this.canvas, {resize: true});
@@ -197,9 +225,11 @@ export class GridComponent implements OnInit, OnDestroy {
 
       setTimeout(() => {
         this.renderer2.removeChild(this.elementRef.nativeElement, this.canvas);
-      }, 1000 * 5);
+      }, 700 * 5);
     }
   }
+
+  // Setters :  launch action defined in grid.actions.ts
 
   setGrid(grid: number[][], x: number, y: number, player: number) {
     this.store.dispatch(new SetGrid(grid, x, y, player));

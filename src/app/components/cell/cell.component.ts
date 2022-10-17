@@ -20,7 +20,9 @@ export class CellComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  /**
+   * return the number of the selected player
+   */
   playerSelected() {
     return {
       empty: this.player == 0,
@@ -29,7 +31,9 @@ export class CellComponent implements OnInit {
     };
   }
 
-
+  /**
+   * return the column of a clicked cell
+   */
   cellClicked(): void {
     this.isClicked.emit(this.position.y);
     this.clicked = true;

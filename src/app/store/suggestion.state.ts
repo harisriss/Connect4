@@ -13,10 +13,14 @@ export interface SuggestionStateModel {
 })
 export class SuggestionState {
 
+  // Selector
+
   @Selector()
   static getSuggestionList(state: SuggestionStateModel): string[] {
     return state.suggestionList;
   }
+
+  // Actions
 
   @Action(AddSuggestion)
   addSuggestion({patchState, getState}: StateContext<SuggestionStateModel>, {newSuggestion}: AddSuggestion): void {

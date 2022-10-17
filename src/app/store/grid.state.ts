@@ -1,5 +1,4 @@
 import {Action, Selector, State, StateContext} from '@ngxs/store';
-import {AddSuggestion, EmptySuggestion} from './suggestion.actions';
 import {EmptyGrid, SetCurrentPlayer, SetGrid, SetIsFinished, SetNbMoves, SetWinner} from "./grid.actions";
 
 const GRID = [
@@ -32,6 +31,8 @@ export interface GridStateModel {
 
 export class GridState {
 
+  // Selectors
+
   @Selector()
   static getGrid(state: GridStateModel): number[][] {
     return state.grid;
@@ -57,6 +58,7 @@ export class GridState {
     return state.nbMoves;
   }
 
+  // Actions
   @Action(SetGrid)
   updateGrid({patchState, getState}: StateContext<GridStateModel>, {grid, x, y, player}: SetGrid): void {
     let newGrid: number[][] = [];
@@ -70,8 +72,6 @@ export class GridState {
         }
       }
     }
-
-    console.log("NewGrid", newGrid);
 
     patchState({grid: newGrid});
   }

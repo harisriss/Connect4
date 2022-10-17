@@ -1,27 +1,38 @@
-# Connect4
+# Connect4 in Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## What have been developed
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Connect 4 game mechanism
+- Responsive Design. Supports desktop and mobile platform.
+- SCSS written with BEM syntax.
+- NGXS as global state manager
+-
 
-## Build
+## Run in local
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the project
+2. Go to the path where you cloned the project and run :
 
-## Running unit tests
+```
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Navigate to [`http://localhost:4200/`](http://localhost:4200/). The app will automatically reload if you change any
+   of the source files.
 
-## Running end-to-end tests
+## Third-party libraries
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- [Angular Material](https://material.angular.io/)
+- [NGXS](https://www.ngxs.io/)
+- [Angular CLI](https://github.com/angular/angular-cli)
+- [canvas-confetti](https://www.npmjs.com/package/canvas-confetti)
 
-## Further help
+<br/>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Project made by Haris COLICHE
+
