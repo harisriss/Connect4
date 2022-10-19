@@ -1,9 +1,9 @@
 # Connect4 in Angular
 
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Demo
+You can preview and test the app here : 
+[https://harisriss.github.io/connect4/](https://harisriss.github.io/connect4)
 
 ## What have been developed
 
@@ -11,7 +11,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 - Responsive Design. Supports desktop and mobile platform.
 - SCSS written with BEM syntax.
 - NGXS as global state manager
--
 
 ## Run in local
 
@@ -19,7 +18,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 2. Go to the path where you cloned the project and run :
 
 ```
-npm install
+npm install && ng serve
 ```
 
 3. Navigate to [`http://localhost:4200/`](http://localhost:4200/). The app will automatically reload if you change any
